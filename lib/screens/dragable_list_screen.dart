@@ -18,18 +18,17 @@ class _ListDataScreenState extends State<ListDataScreen> {
   List<Users> items = [];
   bool isLoading = false;
 
+  ///this function fetches the users lat long and user details from the api
+  void fetchUsersLatLong() {
+    isLoading = true;
+    Services.fetchUsersLatLong().then((users) => {items = users,setState((){})});
+    isLoading = false;
+  }
+
   @override
   void initState() {
-    setState(() {
-
-    });
-      isLoading = true;
-      Services.fetchUsersLatLong().then((users) => {items = users});
-      isLoading = false;
+    fetchUsersLatLong();
     super.initState();
-    setState(() {
-
-    });
   }
 
   @override
